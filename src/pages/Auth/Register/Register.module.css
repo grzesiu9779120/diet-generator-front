@@ -1,0 +1,19 @@
+.registerButton{
+    background-color:#E69025;
+    margin-top: 10px;
+}
+
+.formLabel{
+    display:block;
+    font-weight: 600;
+}
+
+.formInput{
+ border: 1px solid #b0b2b5;
+ border-radius: 5px;
+}
+
+.formSelect{
+ border: 1px solid #b0b2b5;
+ border-radius: 5px;
+}

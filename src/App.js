@@ -4,6 +4,7 @@
 
 import { useReducer, lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import style from './App.module.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Menu from './components/Menu/Menu';
@@ -30,7 +31,7 @@ const App = function () {
   const footer = <Footer />;
 
   const content = (
-    <div>
+    <div className={style.content}>
       <ErrorBoundary>
         <Suspense fallback={<p>Loading...</p>}>
           <Switch>

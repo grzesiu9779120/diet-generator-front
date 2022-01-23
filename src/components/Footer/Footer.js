@@ -6,7 +6,7 @@ const Footer = function () {
       className="page-footer font-small special-color-dark pt-1 fixed-bottom"
       style={{ backgroundColor: 'rgb(194, 230, 142' }}>
       <div className="container">
-        <ul className="list-unstyled list-inline text-center py-2">
+        <ul className="list-unstyled list-inline text-center py-1">
           <li className="list-inline-item">
             <h5 className="mb-1">Register for free</h5>
           </li>
@@ -18,7 +18,7 @@ const Footer = function () {
         </ul>
       </div>
 
-      <div className="footer-copyright text-center py-2">
+      <div className="footer-copyright text-center py-1">
         © 2021 Copyright:
         <a href="https://gdansk.pja.edu.pl/pl/"> PJATK Gdańsk</a>
       </div>

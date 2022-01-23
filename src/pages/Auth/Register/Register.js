@@ -1,8 +1,11 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-useless-escape */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-unused-vars */
 /* eslint-disable func-names */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import style from './Register.module.css';
 import useInput from '../../../hooks/useInput';
@@ -16,6 +19,7 @@ const Register = function () {
   const history = useHistory();
   const [auth, setAuth] = useAuth();
   const [loading, setLoading] = useState(false);
+  const [compatible, setCompatible] = useState(false);
 
   const [usernameProps, setUserName] = useInput('');
   const [emailProps, setEmail] = useInput('');
@@ -27,7 +31,6 @@ const Register = function () {
 
   const [physicalActivity, setPhysicalActivity] = useState('');
   const [gender, setGender] = useState('');
-  const [compatible, setCompatible] = useState(false);
 
   const [usernameError, setNameError] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -35,6 +38,7 @@ const Register = function () {
   const [repeatedPasswordError, setRepeatedPasswordError] = useState('');
   const [weightError, setWeightError] = useState('');
   const [heightError, setHeightError] = useState('');
+  const [ageError, setAgeError] = useState('');
 
   /*
   const submit = async (e) => {
@@ -59,10 +63,87 @@ const Register = function () {
     setLoading(false);
   };
 */
+  const validation = () => {
+    const emailRegex =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+
+    if (usernameProps.value === '') {
+      setNameError('Name field cannot be empty');
+    } else setNameError('');
+
+    if (emailProps.value === '') {
+      setEmailError('Email field cannot be empty');
+    } else if (!emailRegex.test(emailProps.value)) {
+      setEmailError('Email is not valid');
+    } else setEmailError('');
+
+    if (passwordProps.value === '') {
+      setPasswordError('Password field cannot be empty');
+    } else if (!passwordRegex.test(passwordProps.value)) {
+      setPasswordError(
+        'Password is too weak. The password should consist of a minimum of eight characters, one number, one uppercase letter, one lowercase letter'
+      );
+    } else {
+      setPasswordError('');
+    }
+
+    if (repeatedPasswordProps.value === '' || repeatedPasswordProps.value !== passwordProps.value) {
+      setRepeatedPasswordError('The passwords do not match');
+    } else {
+      setRepeatedPasswordError('');
+    }
+
+    if (weightProps.value === '' || (weightProps.value < 10 && weightProps.value > 300)) {
+      setWeightError('Incorrect weight');
+    } else {
+      setWeightError('');
+    }
+
+    if (heightProps.value === '' || (heightProps.value < 50 && heightProps.value > 250)) {
+      setHeightError('Incorrect height');
+    } else {
+      setHeightError('');
+    }
+
+    if (
+      ageProps.value === '' ||
+      ageProps.value < 5 ||
+      ageProps.value > 100 ||
+      isNaN(parseInt(ageProps.value, 10))
+    ) {
+      setAgeError('Incorrect age');
+    } else {
+      setAgeError('');
+    }
+  };
+
+  useEffect(() => {
+    validation();
+    const errorArray = [
+      usernameError,
+      emailError,
+      passwordError,
+      repeatedPasswordError,
+      weightError,
+      heightError,
+      ageError
+    ];
+    errorArray.every((e) => e === '') ? setCompatible(true) : setCompatible(false);
+  }, [
+    usernameProps,
+    emailProps,
+    passwordProps,
+    repeatedPasswordProps,
+    weightProps,
+    heightProps,
+    ageProps
+  ]);
 
   const submit = (e) => {
     e.preventDefault();
     setLoading(true);
+    history.push('/');
   };
 
   if (auth) {
@@ -75,12 +156,38 @@ const Register = function () {
 
       <div className="form-group">
         <form onSubmit={submit}>
-          <InputText description="Username" usernameProps usernameError />
-          <InputText description="Email" emailProps emailError />
-          <InputText description="Password" passwordProps passwordError />
-          <InputText description="Repeat password" repeatedPasswordProps repeatedPasswordError />
-          <InputText description="Weight" weightProps weightError />
-          <InputText description="Height" heightProps heightError />
+          <InputText description="Username" inputProps={usernameProps} inputError={usernameError} />
+          <InputText
+            description="Email"
+            inputProps={emailProps}
+            inputError={emailError}
+            typeInput="email"
+          />
+          <InputText
+            description="Password"
+            inputProps={passwordProps}
+            inputError={passwordError}
+            typeInput="password"
+          />
+          <InputText
+            description="Repeat password"
+            inputProps={repeatedPasswordProps}
+            inputError={repeatedPasswordError}
+            typeInput="password"
+          />
+          <InputText
+            description="Weight (kg)"
+            inputProps={weightProps}
+            inputError={weightError}
+            size="small"
+          />
+          <InputText
+            description="Height (cm)"
+            inputProps={heightProps}
+            inputError={heightError}
+            size="small"
+          />
+          <InputText description="Age" inputProps={ageProps} inputError={ageError} size="small" />
           <label className={style.formLabel}>Physical activity during the day</label>
           <select
             className={style.formSelect}
@@ -94,16 +201,20 @@ const Register = function () {
             <option value={1.9}>Very active</option>
           </select>
           <br />
-          <p>{heightError}</p>
+
           <label className={style.formLabel}>Gender</label>
-          <input type="radio" checked={gender} onClick={() => setGender('male')} /> Male
-          <input type="radio" checked={gender} onClick={() => setGender('female')} /> Female
-          <br />
-          <p>{heightError}</p>
+          <select
+            className={style.formSelect}
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
           <div className="text-right">
             <LoadingButton
               loading={loading}
-              // disabled={!valid}
+              disabled={!compatible}
               className={style.registerButton}>
               Sign up
             </LoadingButton>

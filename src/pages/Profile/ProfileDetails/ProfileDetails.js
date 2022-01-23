@@ -71,17 +71,14 @@ const ProfileDetails = function () {
   return (
     <form onSubmit={submit}>
       {success ? <div className="alert alert-success">Date save</div> : null}
-
-      <div className="form-group">
-        <label>Email</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className={`form-control ${errors.email ? 'is-invalid' : 'is-valid'}`}
-        />
-        <div className="valid-feedback" /> {errors.email}
-      </div>
+      <label>Email</label>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className={`form-control ${errors.email ? 'is-invalid' : 'is-valid'}`}
+      />
+      <div className="valid-feedback" /> {errors.email}
       <div className="form-group">
         <label>Password</label>
         <input

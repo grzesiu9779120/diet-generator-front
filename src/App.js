@@ -21,6 +21,7 @@ import ErrorBoundary from './hoc/ErrorBoundary';
 import AddContent from './pages/Profile/MyContent/AddContent/AddContent';
 import { reducer, intialState } from './reducer';
 import Register from './pages/Auth/Register/Register';
+import Exclusions from './pages/Exclusions/Exclusions';
 
 const App = function () {
   const [state, dispatch] = useReducer(reducer, intialState);
@@ -40,6 +41,7 @@ const App = function () {
             <Route path="/examples/:id" component={Example} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/exclusions" component={Exclusions} />
             <Route path="/" exact component={Home} />
             <Route component={NotFound} />
           </Switch>

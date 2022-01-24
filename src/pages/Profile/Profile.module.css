@@ -1,0 +1,74 @@
+.conteiner{
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content: center;
+    font-family: Lato;
+
+}
+
+.lineBreak {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+.profileImg{
+    width: 200px;
+    height: 200px;
+    border-radius: 45px;
+    border: 5px solid black;
+    margin-right: auto;
+    margin-left: 150px;
+}
+
+p{
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    width: 50%;
+}
+
+span{
+    
+    text-align: left;
+    font-weight: normal;
+    font-size: 1rem;
+    margin-top: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+span:first-child{
+    margin-top: 10px;
+}
+
+
+.caloricDemandConteiner{
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.caloric{
+margin-left: 12px;
+ width: 225px;
+ height: 115px;
+ border: 2px solid black;
+ border-radius: 15px;
+ background-color: white;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+ font-weight: 900;
+ font-size: 1.6rem;
+}
+
+.buttonProfile{
+    border-style: none;
+    border-radius: 10px;
+    width: 150px;
+    height: 35px;
+    background-color: #2A7EDB;
+    color: white;
+}

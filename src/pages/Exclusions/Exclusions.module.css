@@ -1,0 +1,20 @@
+.conteiner{
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content: center;
+    font-family: Lato;
+    margin-top: 15px;
+
+}
+
+.lineBreakExclusion {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.conteiner:first-child{
+    width: 85%;
+    font-weight: 700;
+    font-size: 1.3rem;
+}

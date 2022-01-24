@@ -194,11 +194,11 @@ const Register = function () {
             value={physicalActivity}
             onChange={(e) => setPhysicalActivity(e.target.value)}
             required>
-            <option value={1.2}>Almost none</option>
-            <option value={1.35}>Light activity</option>
-            <option value={1.55}>Moderate activity</option>
-            <option value={1.725}>High activity</option>
-            <option value={1.9}>Very active</option>
+            <option value="Almost none">Almost none</option>
+            <option value="Lightly Active">Light activity</option>
+            <option value="Moderately Active">Moderate activity</option>
+            <option value="High Activity">High activity</option>
+            <option value="Very high Activity">High activity</option>
           </select>
           <br />
 

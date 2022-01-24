@@ -1,0 +1,36 @@
+{   
+    "meals" : [
+    { "name": "Rice with chicken",
+        "img": "tutaj będzie url z storege w firebase",
+        "igridients": {
+            "rice": {
+                "quantity": 100,
+                "kcal" : 400
+            },
+            "chicken": {
+                "quantity": 125,
+                "kcal" : 325
+            },
+            "butter": {
+                "quantity": 50,
+                "kcal" : 500
+            } 
+        }},
+        { "name": "tutaj coś innego (inwencja twórcza)",
+            "img": "tutaj będzie url z storege w firebase",
+            "igridients": {
+                "rice": {
+                    "quantity": 100,
+                    "kcal" : 400
+                },
+                "chicken": {
+                    "quantity": 125,
+                    "kcal" : 325
+                },
+                "butter": {
+                    "quantity": 50,
+                    "kcal" : 500
+                } 
+            }}
+]
+}

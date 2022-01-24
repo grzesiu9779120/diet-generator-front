@@ -32,6 +32,11 @@ const Menu = function () {
                 My profile
               </NavLink>
             </li>
+            <li className={style.menuItem}>
+              <NavLink to="/exclusions" activeClassName={style.menuItemActive}>
+                Exclusions
+              </NavLink>
+            </li>
           </>
         ) : (
           <>

@@ -8,16 +8,14 @@
 import { useState } from 'react';
 import style from './GenerateMeals.module.css';
 import meals from '../../assets/data/meals.json';
+import mealsObject from '../../helpers/meals';
 import Meal from './Meal';
 
 const GenerateMeals = function () {
   const [generateDiet, setGenerateDiet] = useState(false);
 
-  const [numberMeals, setNumberMeals] = useState([]);
-
   const showDiet = () => {
     setGenerateDiet(true);
-    console.log(meals.meals[0]);
   };
 
   return (
@@ -33,15 +31,45 @@ const GenerateMeals = function () {
         Generate
       </button>
       <div className={style.lineBreakGenerate} />
-      <div className={style.conteinerMeals}>
-        <Meal
-          name="Chicen with rise"
-          img="https://static.onecms.io/wp-content/uploads/sites/44/2019/08/26231113/5783153.jpg"
-          calories="450"
-          ingredients={['avocado', 'smalec', 'wątroba', 'chujemuje']}
-          quantity={['50', '10', '25', '1000']}
-        />
-      </div>
+      {showDiet ? (
+        <div className={style.conteinerMeals}>
+          <Meal
+            name={mealsObject.meals[0].name}
+            img={mealsObject.meals[0].img}
+            calories={mealsObject.meals[0].calories}
+            ingredients={['rice', 'chicken', 'butter']}
+            quantity={['50', '10', '25']}
+          />
+          <Meal
+            name={mealsObject.meals[1].name}
+            img={mealsObject.meals[1].img}
+            calories="350"
+            ingredients={['fish', 'carrot', 'courgette']}
+            quantity={['300', '65', '50']}
+          />
+          <Meal
+            name={mealsObject.meals[2].name}
+            img={mealsObject.meals[2].img}
+            calories="621"
+            ingredients={['chicken', 'bread', 'cheese', 'tomato', 'bbq sause']}
+            quantity={['125', '105', '70', '85', '10']}
+          />
+          <Meal
+            name={mealsObject.meals[3].name}
+            img={mealsObject.meals[3].img}
+            calories="373"
+            ingredients={['porridge', 'apple', 'cinnamon']}
+            quantity={['100', '25', '5']}
+          />
+          <Meal
+            name={mealsObject.meals[4].name}
+            img={mealsObject.meals[4].img}
+            calories="651"
+            ingredients={['pasta', 'lentils', 'onion', 'carrot']}
+            quantity={['90', '200', '25', '20']}
+          />
+        </div>
+      ) : null}
     </div>
   );
 };

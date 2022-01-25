@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-useless-escape */
@@ -40,15 +41,14 @@ const Register = function () {
   const [heightError, setHeightError] = useState('');
   const [ageError, setAgeError] = useState('');
 
-  /*
   const submit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
       const res = await axios.post('accounts:signUp', {
-        email: form.email.value,
-        password: form.password.value,
+        email: emailProps.value,
+        password: passwordProps.value,
         returnSecureToken: true
       });
       setAuth({
@@ -58,11 +58,12 @@ const Register = function () {
       });
       history.push('/');
     } catch (ex) {
-      setErrorFirebase(ex.response.data.error.message);
+      console.log(ex);
     }
     setLoading(false);
+    history.push('/');
   };
-*/
+
   const validation = () => {
     const emailRegex =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -140,12 +141,14 @@ const Register = function () {
     ageProps
   ]);
 
+  /*
   const submit = (e) => {
     e.preventDefault();
     setLoading(true);
     history.push('/');
   };
 
+  */
   if (auth) {
     history.push('/');
   }

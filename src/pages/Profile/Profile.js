@@ -5,12 +5,12 @@ import profilePicture from '../../assets/images/1.png';
 import caloricDemandCalculator from '../../helpers/caloricDemandCalculator';
 
 const user = {
-  username: 'nowak',
-  email: 'nowak@gmail.com',
+  username: 'user',
+  email: 'user@wp.pl',
   physicalDetails: {
     weight: 75,
-    height: 172,
-    age: 32,
+    height: 175,
+    age: 35,
     physicalActivity: 'Almost none',
     gender: 'Male'
   }

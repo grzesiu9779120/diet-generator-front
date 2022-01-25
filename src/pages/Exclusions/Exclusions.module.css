@@ -1,11 +1,11 @@
-.conteiner{
+.conteinerExclusion{
     display: flex;
     flex-flow: row wrap;
     align-content: center;
     justify-content: center;
     font-family: Lato;
     margin-top: 15px;
-
+    width: 95%;
 }
 
 .lineBreakExclusion {
@@ -13,8 +13,17 @@
     margin-bottom: 10px;
 }
 
-.conteiner:first-child{
+.headerExclusion{
     width: 85%;
     font-weight: 700;
     font-size: 1.3rem;
+}
+
+.ingridientConteiner{
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content: center;
+    font-family: Lato;
+    width: 90%;
 }

@@ -22,13 +22,13 @@ import AddContent from './pages/Profile/MyContent/AddContent/AddContent';
 import { reducer, intialState } from './reducer';
 import Register from './pages/Auth/Register/Register';
 import Exclusions from './pages/Exclusions/Exclusions';
+import GenerateMeals from './pages/GenerateMeals/GenerateMeals';
 
 const App = function () {
   const [state, dispatch] = useReducer(reducer, intialState);
 
   const header = <Header />;
   const menu = <Menu />;
-  // const footer = <div />;
   const footer = <Footer />;
 
   const content = (
@@ -42,6 +42,7 @@ const App = function () {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/exclusions" component={Exclusions} />
+            <Route path="/generate" component={GenerateMeals} />
             <Route path="/" exact component={Home} />
             <Route component={NotFound} />
           </Switch>

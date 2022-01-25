@@ -37,6 +37,11 @@ const Menu = function () {
                 Exclusions
               </NavLink>
             </li>
+            <li className={style.menuItem}>
+              <NavLink to="/generate" activeClassName={style.menuItemActive}>
+                Generate Meals
+              </NavLink>
+            </li>
           </>
         ) : (
           <>

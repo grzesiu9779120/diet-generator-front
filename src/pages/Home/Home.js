@@ -45,7 +45,7 @@ const Home = function () {
           type="button"
           className={style.createAccountLink}
           onClick={() => {
-            history.push('/');
+            history.push('/register');
           }}>
           Sign up with email
         </button>
